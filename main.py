@@ -219,8 +219,9 @@ class MusicApp:
         pygame.mixer.stop()
     
     def add_song_pressed(self):
-        added_song = filedialog.askopenfilename(initialdir="Songs", title="Add Song", filetypes=(("MP3 files", "*.mp3"),("all files","*.*")))
-        shutil.copy(added_song, "Songs\\")
+        added_song = filedialog.askopenfilenames(initialdir="Songs", title="Add Song", filetypes=(("MP3 files", "*.mp3"),("all files","*.*")))
+        for item in added_song:
+            shutil.copy(item, "Songs\\")
         self.get_song()
         self.fatch_data(song_list)
     
